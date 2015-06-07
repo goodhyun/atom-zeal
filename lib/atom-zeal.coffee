@@ -7,26 +7,21 @@ plugin = module.exports =
     atom.commands.add 'atom-workspace', 'atom-zeal:shortcut', => @shortcut()
 
   shortcut: () ->
-    editor    = atom.workspace.getActiveEditor()
-    selection = editor.getSelection().getText()
+    editor    = atom.workspace.getActiveTextEditor()
+    selection = editor.getSelectedText()
 
     return plugin.search(selection) if selection
 
-    scopes       = editor.getCursorScopes()
-    currentScope = scopes[scopes.length - 1]
+    editor.selectWordsContainingCursors()
+    selection = editor.getSelectedText()
 
-    # Use the current scope, if available
-    # Else use the word under the cursor
-    if scopes.length > 1
-      range = editor.bufferRangeForScopeAtCursor(currentScope)
-      text  = editor.getTextInBufferRange(range)
-    else
-      text = editor.getWordUnderCursor()
-
-    plugin.search(text)
+    plugin.search(selection)
 
   contextMenu: () ->
-    plugin.search(atom.workspace.getActiveEditor().getWordUnderCursor())
+    editor    = atom.workspace.getActiveTextEditor()
+    editor.selectWordsContainingCursors()
+    selection = editor.getSelectedText()
+    plugin.search(selection)
 
   search: (string) ->
-    exec("zeal --query #{string}")
+    exec('zeal --query "' + string + '"')
