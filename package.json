@@ -1,7 +1,7 @@
 {
   "name": "atom-zeal",
   "main": "./lib/atom-zeal",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Zeal documentation integration for Atom",
   "repository": "https://github.com/gliwka/atom-zeal",
   "author": "Matthias Gliwka <matthias@gliwka.de> (http://gliwka.de/)",
