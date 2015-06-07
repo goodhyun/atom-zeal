@@ -7,7 +7,7 @@
   "author": "Matthias Gliwka <matthias@gliwka.de> (http://gliwka.de/)",
   "license": "BSD-3-Clause",
   "engines": {
-    "atom": ">0.50.0"
+    "atom": ">0.200.0"
   },
   "dependencies": {}
 }
