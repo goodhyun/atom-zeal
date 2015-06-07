@@ -3,8 +3,8 @@ exec = childProcess.exec
 
 plugin = module.exports =
   activate: () ->
-    atom.workspaceView.command('atom-zeal:context-menu', @contextMenu)
-    atom.workspaceView.command('atom-zeal:shortcut', @shortcut)
+    atom.commands.add 'atom-workspace', 'atom-zeal:context-menu', => @contextMenu()
+    atom.commands.add 'atom-workspace', 'atom-zeal:shortcut', => @shortcut()
 
   shortcut: () ->
     editor    = atom.workspace.getActiveEditor()
