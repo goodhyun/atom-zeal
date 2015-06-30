@@ -24,4 +24,6 @@ plugin = module.exports =
     plugin.search(selection)
 
   search: (string) ->
-    exec('zeal --query "' + string + '"')
+    grammar = atom.workspace.getActiveTextEditor().getGrammar()
+    language = grammar.name.toLowerCase()
+    exec('zeal --query "' + language + ':' + string + '"')
