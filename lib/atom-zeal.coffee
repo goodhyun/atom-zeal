@@ -24,4 +24,19 @@ plugin = module.exports =
     plugin.search(selection)
 
   search: (string) ->
-    exec('zeal --query "' + string + '"')
+    grammar = atom.workspace.getActiveTextEditor().getGrammar()
+    language = grammar.name.toLowerCase()
+
+    # adjust search for some common languages
+    switch language
+        when 'ruby' then language = 'ruby,ruby 2'
+        when 'python' then language = 'python,python 2,python 3'
+        when 'java' then language = 'java se6,java se7,java se8'
+        when 'html' then language = 'html,css'
+        when 'c++' then language = 'c,c++' # + boost?
+
+    if language != 'null grammar'
+        exec('zeal "' + language + ':' + string + '"')
+    else 
+        exec('zeal "' + string + '"')
+    
