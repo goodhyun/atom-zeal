@@ -33,7 +33,6 @@ plugin = module.exports =
         when 'ruby' then language = 'ruby,ruby 2'
         when 'python' then language = 'python,python 2,python 3'
         when 'java' then language = 'java se6,java se7,java se8'
-        when 'javascript (jsx)' then language = 'javascript'
         when 'html' then language = 'html,css'
         when 'c++' then language = 'c,c++' # + boost?
 
